@@ -1,0 +1,332 @@
+<!doctype html>
+<html lang="en">
+<head>
+  <meta charset="utf-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1">
+  <meta name="theme-color" content="#f7f8f4">
+  <meta name="description" content="Nilendu Adhikary — Computer Science student at IIT (BHU), working across multimodal AI, retrieval, and applied machine learning.">
+  <title>Nilendu Adhikary — CS · AI · Research</title>
+  <style>
+    :root {
+      --paper: #f7f8f4;
+      --surface: #ffffff;
+      --ink: #182b3a;
+      --muted: #60717c;
+      --line: #dfe6e3;
+      --blue: #246b78;
+      --blue-soft: #e7f1f0;
+      --lime: #d8ef9a;
+      --serif: Georgia, "Times New Roman", serif;
+      --sans: Inter, ui-sans-serif, system-ui, -apple-system, BlinkMacSystemFont, "Segoe UI", sans-serif;
+      --shadow: 0 14px 40px rgba(24, 43, 58, .06);
+    }
+    * { box-sizing: border-box; }
+    html { scroll-behavior: smooth; scroll-padding-top: 90px; }
+    body { margin: 0; background: var(--paper); color: var(--ink); font-family: var(--sans); line-height: 1.65; }
+    a { color: inherit; text-decoration: none; }
+    a:focus-visible, button:focus-visible { outline: 3px solid #76b6bd; outline-offset: 4px; }
+    .wrap { width: min(1080px, calc(100% - 44px)); margin-inline: auto; }
+    .nav-shell { position: sticky; top: 0; z-index: 20; backdrop-filter: blur(16px); background: rgba(247,248,244,.88); border-bottom: 1px solid rgba(223,230,227,.8); }
+    nav { min-height: 70px; display: flex; align-items: center; justify-content: space-between; gap: 20px; }
+    .brand { font-weight: 800; letter-spacing: -.04em; font-size: 1.03rem; }
+    .brand span { color: var(--blue); }
+    .nav-links { display: flex; gap: 24px; align-items: center; color: var(--muted); font-size: .88rem; }
+    .nav-links a:hover { color: var(--blue); }
+    .nav-links .cv-link { color: var(--ink); padding: 8px 13px; border: 1px solid var(--line); border-radius: 999px; background: white; }
+    .hero { padding: 84px 0 70px; position: relative; overflow: hidden; }
+    .hero::after { content: ""; position: absolute; width: 360px; height: 360px; border-radius: 50%; right: -90px; top: 5px; background: radial-gradient(circle, rgba(216,239,154,.48), rgba(216,239,154,0) 68%); pointer-events: none; }
+    .hero-grid { display: grid; grid-template-columns: 1.5fr .7fr; gap: 56px; align-items: center; position: relative; z-index: 1; }
+    .eyebrow { display: inline-flex; align-items: center; gap: 9px; color: var(--blue); text-transform: uppercase; letter-spacing: .13em; font-size: .72rem; font-weight: 800; }
+    .dot { width: 7px; height: 7px; background: #7aab4b; border-radius: 50%; box-shadow: 0 0 0 4px #e8f2d8; }
+    h1 { font-size: clamp(3rem, 7vw, 5.7rem); letter-spacing: -.075em; line-height: .98; margin: 23px 0 24px; font-weight: 750; }
+    h1 .serif { font-family: var(--serif); font-weight: 500; font-style: italic; letter-spacing: -.07em; color: var(--blue); }
+    .intro { max-width: 650px; font-size: clamp(1.03rem, 1.6vw, 1.2rem); color: #4c606c; line-height: 1.8; }
+    .hero-actions { display: flex; gap: 12px; flex-wrap: wrap; margin-top: 28px; }
+    .btn { display: inline-flex; align-items: center; justify-content: center; gap: 8px; padding: 11px 17px; border-radius: 999px; font-size: .9rem; font-weight: 700; transition: transform .2s, background .2s; }
+    .btn:hover { transform: translateY(-2px); }
+    .btn-primary { background: var(--ink); color: white; }
+    .btn-secondary { border: 1px solid var(--line); background: white; }
+    .hero-note { background: rgba(255,255,255,.8); border: 1px solid var(--line); border-radius: 22px; padding: 25px; box-shadow: var(--shadow); transform: rotate(1.5deg); }
+    .note-label { color: var(--muted); font-size: .73rem; letter-spacing: .12em; text-transform: uppercase; font-weight: 800; }
+    .note-big { font-family: var(--serif); font-size: 2rem; line-height: 1.1; margin: 12px 0; }
+    .note-rule { height: 1px; background: var(--line); margin: 18px 0; }
+    .note-row { display: flex; justify-content: space-between; gap: 12px; font-size: .87rem; padding: 5px 0; }
+    .note-row span:first-child { color: var(--muted); }
+    section { padding: 68px 0; }
+    .section-head { display: flex; justify-content: space-between; align-items: end; gap: 24px; margin-bottom: 27px; }
+    .kicker { color: var(--blue); text-transform: uppercase; letter-spacing: .14em; font-size: .7rem; font-weight: 850; }
+    h2 { margin: 5px 0 0; font-size: clamp(2rem, 4vw, 3rem); letter-spacing: -.06em; line-height: 1.1; }
+    .section-desc { color: var(--muted); max-width: 420px; font-size: .94rem; margin: 0; }
+    .about-grid { display: grid; grid-template-columns: 1.1fr .9fr; gap: 22px; }
+    .panel { background: var(--surface); border: 1px solid var(--line); border-radius: 20px; padding: 27px; }
+    .panel p { color: #526570; margin-top: 0; }
+    .focus-list { display: grid; gap: 12px; }
+    .focus-item { display: flex; gap: 12px; align-items: flex-start; }
+    .focus-icon { width: 34px; height: 34px; flex: 0 0 34px; display: grid; place-items: center; background: var(--blue-soft); color: var(--blue); border-radius: 10px; font-size: .95rem; }
+    .focus-item strong { display: block; font-size: .94rem; }
+    .focus-item small { color: var(--muted); display: block; margin-top: 1px; }
+    .education { display: grid; grid-template-columns: 1fr 1fr; gap: 14px; }
+    .edu-card { background: white; border: 1px solid var(--line); padding: 22px; border-radius: 17px; }
+    .edu-card .year { color: var(--blue); font-weight: 800; font-size: .77rem; letter-spacing: .08em; }
+    .edu-card h3 { margin: 8px 0 5px; font-size: 1.05rem; letter-spacing: -.025em; }
+    .edu-card p { margin: 0; color: var(--muted); font-size: .9rem; }
+    .edu-foot { display: flex; justify-content: space-between; gap: 12px; margin-top: 16px; padding-top: 12px; border-top: 1px solid var(--line); font-size: .84rem; }
+    .edu-foot strong { color: var(--blue); }
+    .projects { display: grid; grid-template-columns: repeat(2, 1fr); gap: 16px; }
+    .project { background: white; border: 1px solid var(--line); border-radius: 20px; padding: 25px; display: flex; flex-direction: column; min-height: 265px; transition: transform .22s, box-shadow .22s, border-color .22s; }
+    .project:hover { transform: translateY(-4px); box-shadow: var(--shadow); border-color: #b9d3d1; }
+    .project-top { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
+    .project-number { color: #93a2a7; font-size: .77rem; font-weight: 800; letter-spacing: .12em; }
+    .tag { background: var(--blue-soft); color: var(--blue); border-radius: 999px; padding: 5px 9px; font-size: .7rem; font-weight: 800; white-space: nowrap; }
+    .project h3 { margin: 17px 0 8px; font-size: 1.25rem; line-height: 1.25; letter-spacing: -.04em; }
+    .project p { color: var(--muted); font-size: .91rem; margin: 0 0 20px; }
+    .stack { display: flex; flex-wrap: wrap; gap: 7px; margin-top: auto; }
+    .stack span { font-size: .73rem; color: #526570; border: 1px solid var(--line); border-radius: 6px; padding: 3px 7px; }
+    .publication-list { display: grid; gap: 12px; }
+    .publication { display: grid; grid-template-columns: 58px 1fr auto; gap: 18px; align-items: start; background: white; border: 1px solid var(--line); padding: 22px; border-radius: 17px; }
+    .pub-year { font-family: var(--serif); color: var(--blue); font-size: 1.3rem; }
+    .publication h3 { margin: 0 0 5px; font-size: 1.02rem; line-height: 1.4; }
+    .publication p { margin: 0; color: var(--muted); font-size: .88rem; }
+    .pub-status { font-size: .72rem; font-weight: 800; color: #54772e; background: #eff6df; padding: 5px 9px; border-radius: 999px; white-space: nowrap; }
+    .reading { background: #eaf2ee; border: 1px solid #d7e4dd; border-radius: 22px; padding: 29px; display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: center; }
+    .reading .book-kicker { color: var(--blue); font-size: .72rem; font-weight: 850; letter-spacing: .13em; text-transform: uppercase; }
+    .reading h3 { font-family: var(--serif); font-weight: 500; font-size: clamp(1.8rem, 3vw, 2.7rem); line-height: 1.12; margin: 9px 0; letter-spacing: -.04em; }
+    .reading p { margin: 0; color: #536b70; max-width: 620px; }
+    .book-mark { width: 100px; height: 126px; border-radius: 5px 12px 12px 5px; background: #214e58; color: #f7f5e9; display: flex; flex-direction: column; justify-content: space-between; padding: 13px 11px; box-shadow: 7px 8px 0 #c6d9cf; transform: rotate(4deg); }
+    .book-mark small { font-size: .46rem; letter-spacing: .13em; }
+    .book-mark strong { font-family: var(--serif); font-size: .91rem; line-height: 1.08; }
+    .stats { display: grid; grid-template-columns: repeat(3, 1fr); gap: 13px; }
+    .stat { border-top: 2px solid var(--blue); padding: 17px 0 0; }
+    .stat strong { display: block; font-family: var(--serif); font-size: 2.25rem; font-weight: 500; letter-spacing: -.05em; }
+    .stat span { color: var(--muted); font-size: .86rem; }
+    .skills { display: flex; flex-wrap: wrap; gap: 9px; }
+    .skills span { border: 1px solid var(--line); background: white; border-radius: 999px; padding: 8px 12px; font-size: .83rem; color: #425763; }
+    .contact { background: var(--ink); color: #f5f7f3; border-radius: 24px; padding: clamp(28px, 5vw, 50px); display: flex; justify-content: space-between; align-items: center; gap: 30px; }
+    .contact h2 { max-width: 570px; }
+    .contact p { color: #bdcbd0; margin-bottom: 0; }
+    .contact .btn { background: var(--lime); color: var(--ink); white-space: nowrap; }
+    footer { padding: 26px 0 35px; color: #7b8a91; font-size: .8rem; }
+    .footer-row { display: flex; justify-content: space-between; gap: 20px; flex-wrap: wrap; }
+    .footer-links { display: flex; gap: 17px; }
+    .footer-links a:hover { color: var(--blue); }
+    .tiny { font-size: .78rem; color: var(--muted); }
+    @media (max-width: 760px) {
+      .wrap { width: min(100% - 30px, 620px); }
+      nav { min-height: 62px; }
+      .nav-links { gap: 12px; font-size: .8rem; }
+      .nav-links a:not(.cv-link) { display: none; }
+      .hero { padding: 62px 0 48px; }
+      .hero-grid, .about-grid { grid-template-columns: 1fr; gap: 28px; }
+      .hero-note { max-width: 420px; transform: none; }
+      section { padding: 48px 0; }
+      .section-head { display: block; }
+      .section-desc { margin-top: 12px; }
+      .education, .projects { grid-template-columns: 1fr; }
+      .publication { grid-template-columns: 42px 1fr; gap: 12px; }
+      .pub-status { grid-column: 2; justify-self: start; }
+      .reading { grid-template-columns: 1fr; }
+      .book-mark { display: none; }
+      .stats { gap: 10px; }
+      .stat strong { font-size: 1.8rem; }
+      .contact { align-items: flex-start; flex-direction: column; }
+    }
+    @media (prefers-reduced-motion: reduce) { html { scroll-behavior: auto; } *, *::before, *::after { transition-duration: .01ms !important; animation-duration: .01ms !important; } }
+  </style>
+</head>
+<body>
+  <div class="nav-shell">
+    <nav class="wrap" aria-label="Main navigation">
+      <a class="brand" href="#top">nilendu<span>.</span></a>
+      <div class="nav-links">
+        <a href="#about">About</a><a href="#studies">Studies</a><a href="#projects">Projects</a><a href="#writing">Research</a><a href="#reading">Reading</a>
+        <a class="cv-link" href="assets/Nilendu_Adhikary_CV.pdf" target="_blank" rel="noreferrer">CV ↗</a>
+      </div>
+    </nav>
+  </div>
+
+  <main id="top">
+    <header class="hero">
+      <div class="wrap hero-grid">
+        <div>
+          <div class="eyebrow"><span class="dot"></span> CS student · AI researcher · builder</div>
+          <h1>Nilendu<br><span class="serif">Adhikary.</span></h1>
+          <p class="intro">I’m a Computer Science student at IIT (BHU), Varanasi, interested in building thoughtful machine-learning systems — especially where language, vision, retrieval, and reasoning meet.</p>
+          <div class="hero-actions">
+            <a class="btn btn-primary" href="#projects">Explore my work <span aria-hidden="true">↘</span></a>
+            <a class="btn btn-secondary" href="assets/Nilendu_Adhikary_CV.pdf" target="_blank" rel="noreferrer">Read my CV ↗</a>
+            <a class="btn btn-secondary" href="mailto:adhikarynilenducp@gmail.com">Say hello ↗</a>
+          </div>
+        </div>
+        <aside class="hero-note" aria-label="Quick profile">
+          <div class="note-label">Currently at a glance</div>
+          <div class="note-big">Curious by<br>default.</div>
+          <div class="note-rule"></div>
+          <div class="note-row"><span>University</span><strong>IIT (BHU)</strong></div>
+          <div class="note-row"><span>Degree</span><strong>IDD · CSE</strong></div>
+          <div class="note-row"><span>Interests</span><strong>AI / IR / ML</strong></div>
+          <div class="note-row"><span>Currently reading</span><strong>DDIA</strong></div>
+        </aside>
+      </div>
+    </header>
+
+    <section id="about">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">A little about me</div><h2>Research-minded.<br>Practical at heart.</h2></div>
+          <p class="section-desc">I like taking ideas from papers and turning them into experiments, systems, and tools that people can actually use.</p>
+        </div>
+        <div class="about-grid">
+          <div class="panel">
+            <p>My work spans multimodal understanding, inclusive language generation, and quantitative simulation. I enjoy the space between a clean mathematical idea and the engineering needed to make it work.</p>
+            <p style="margin-bottom:0">Outside the lab, I’m usually reading, listening to music, or exploring a new idea that might become a project.</p>
+          </div>
+          <div class="panel focus-list">
+            <div class="focus-item"><div class="focus-icon">⌘</div><div><strong>Multimodal AI</strong><small>Connecting image, text, and context.</small></div></div>
+            <div class="focus-item"><div class="focus-icon">⌕</div><div><strong>Information retrieval</strong><small>Retrieval, evidence, and useful representations.</small></div></div>
+            <div class="focus-item"><div class="focus-icon">↗</div><div><strong>Systems & engineering</strong><small>Building practical, deployable applications.</small></div></div>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="studies">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">The academic path</div><h2>Studies</h2></div>
+          <p class="section-desc">A foundation in computer science, shaped by curiosity and a willingness to learn beyond the syllabus.</p>
+        </div>
+        <div class="education">
+          <article class="edu-card">
+            <div class="year">2023 — 2028</div>
+            <h3>Indian Institute of Technology (BHU), Varanasi</h3>
+            <p>Integrated Dual Degree · Computer Science and Engineering</p>
+            <div class="edu-foot"><span>Current CGPA</span><strong>8.41 / 10</strong></div>
+          </article>
+          <article class="edu-card">
+            <div class="year">2021 — 2023</div>
+            <h3>Chanserpur High School</h3>
+            <p>WBCHSE · Higher Secondary</p>
+            <div class="edu-foot"><span>Final score</span><strong>93.20%</strong></div>
+          </article>
+        </div>
+        <div style="margin-top:14px" class="panel">
+          <div class="kicker">A milestone I’m proud of</div>
+          <p style="margin:7px 0 0">Earned a perfect first-semester Performance Index (PI) of 10.0 and secured a branch change from Mechanical Engineering to CSE.</p>
+        </div>
+      </div>
+    </section>
+
+    <section id="projects">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">Selected work</div><h2>Things I’ve built</h2></div>
+          <p class="section-desc">A small selection across research, useful software, and quantitative modelling — not a wall of every experiment.</p>
+        </div>
+        <div class="projects">
+          <article class="project">
+            <div class="project-top"><span class="project-number">PROJECT / 01</span><span class="tag">Multimodal AI</span></div>
+            <h3>GraphFusion</h3>
+            <p>A framework for hateful-meme understanding that combines transformer text features, CLIP vision features, graph reasoning, and contradiction-aware fusion.</p>
+            <div class="stack"><span>PyTorch</span><span>CLIP</span><span>GATv2</span><span>PyTorch Geometric</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="project-number">PROJECT / 02</span><span class="tag">Mobile · NLP · TTS</span></div>
+            <h3>Kids Magazine</h3>
+            <p>A multilingual learning app that helps children explore native scripts, with Hindi transliteration and speech support for Bengali and Hindi.</p>
+            <div class="stack"><span>Flutter</span><span>Python</span><span>Flask</span><span>Firebase</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="project-number">PROJECT / 03</span><span class="tag">Quant finance</span></div>
+            <h3>Delta Hedging Simulator</h3>
+            <p>A simulation environment for generating 10K+ synthetic stock paths and evaluating option-hedging strategies in normal, stressed, and adversarial conditions.</p>
+            <div class="stack"><span>Python</span><span>Monte Carlo</span><span>Black–Scholes</span><span>PyTorch</span></div>
+          </article>
+          <article class="project">
+            <div class="project-top"><span class="project-number">PROJECT / 04</span><span class="tag">Inclusive NLP</span></div>
+            <h3>JustGen @ LT-EDI</h3>
+            <p>A multilingual retrieval-augmented generation pipeline that rewrites gender-biased text into more inclusive alternatives while preserving meaning.</p>
+            <div class="stack"><span>FAISS</span><span>RAG</span><span>LLMs</span><span>Sentence Transformers</span></div>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="writing">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">Research & writing</div><h2>From experiments to papers</h2></div>
+          <p class="section-desc">Research is a process: ask a precise question, test it carefully, and share what the evidence says.</p>
+        </div>
+        <div class="publication-list">
+          <article class="publication">
+            <div class="pub-year">2026</div>
+            <div><h3>GraphFusion: Multimodal Hateful Meme Understanding using Graph Reasoning</h3><p>Manuscript accepted at ACM-ICMI 2026. Work on graph reasoning and contradiction-aware multimodal fusion.</p></div>
+            <span class="pub-status">Accepted</span>
+          </article>
+          <article class="publication">
+            <div class="pub-year">2026</div>
+            <div><h3>JustGen@LT-EDI: Controlled Gender-Inclusive and Bias-Aware Language Generation using LLMs</h3><p>Accepted at the ACL Workshop on Language Technology for Equality, Diversity and Inclusion (LT-EDI).</p></div>
+            <span class="pub-status">Accepted</span>
+          </article>
+        </div>
+      </div>
+    </section>
+
+    <section id="reading">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">Learning beyond class</div><h2>On my reading desk</h2></div>
+          <p class="section-desc">The best ideas often arrive when you connect concepts from different fields.</p>
+        </div>
+        <div class="reading">
+          <div>
+            <div class="book-kicker">Currently reading</div>
+            <h3>Designing Data-Intensive Applications</h3>
+            <p><em>Martin Kleppmann</em> — exploring the principles behind reliable, scalable, and maintainable data systems. A useful companion to my interest in building ML systems that work outside a notebook.</p>
+          </div>
+          <div class="book-mark" aria-hidden="true"><small>READING NOTES</small><strong>Designing<br>Data-Intensive<br>Applications</strong><small>M. KLEPPMANN</small></div>
+        </div>
+      </div>
+    </section>
+
+    <section id="beyond">
+      <div class="wrap">
+        <div class="section-head">
+          <div><div class="kicker">A few signals</div><h2>Beyond coursework</h2></div>
+        </div>
+        <div class="stats">
+          <div class="stat"><strong>1715</strong><span>Peak Codeforces rating</span></div>
+          <div class="stat"><strong>400+</strong><span>LeetCode problems solved</span></div>
+          <div class="stat"><strong>10.0</strong><span>First-semester PI</span></div>
+        </div>
+        <div style="margin-top:34px">
+          <div class="kicker" style="margin-bottom:13px">Tools I enjoy working with</div>
+          <div class="skills">
+            <span>Python</span><span>C / C++</span><span>PyTorch</span><span>Transformers</span><span>FAISS</span><span>scikit-learn</span><span>SQL</span><span>Flutter</span><span>React</span><span>Flask</span><span>Git</span><span>LaTeX</span>
+          </div>
+        </div>
+      </div>
+    </section>
+
+    <section id="contact">
+      <div class="wrap">
+        <div class="contact">
+          <div><div class="kicker" style="color:#b8d8b7">Let’s connect</div><h2>Good ideas get better when shared.</h2><p>For research, collaboration, or just a thoughtful conversation — feel free to reach out.</p></div>
+          <a class="btn" href="mailto:adhikarynilenducp@gmail.com">Email me ↗</a>
+        </div>
+      </div>
+    </section>
+  </main>
+  <footer>
+    <div class="wrap footer-row">
+      <span>© <span id="year">2026</span> Nilendu Adhikary · Made with curiosity.</span>
+      <div class="footer-links">
+        <a href="https://github.com/nilesar" target="_blank" rel="noreferrer">GitHub ↗</a>
+        <a href="https://www.linkedin.com/in/nilendu-adhikary-47a10227b/" target="_blank" rel="noreferrer">LinkedIn ↗</a>
+        <a href="mailto:adhikarynilenducp@gmail.com">Email ↗</a>
+      </div>
+    </div>
+  </footer>
+  <script>document.getElementById("year").textContent = new Date().getFullYear();</script>
+</body>
+</html>
